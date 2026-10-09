@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas Comunitarias - Adopciones</title>
+    <link rel="stylesheet" href="estilo.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <i data-lucide="heart-handshake" class="logo-icon"></i>
+                <h1>Huellitas Comunitarias</h1>
+            </div>
+            <nav class="barra-navegacion">
+                <a href="index.html" class="boton-nav"><i data-lucide="home"></i> Inicio</a>
+                <a href="adopciones.html" class="boton-nav activo"><i data-lucide="paw-print"></i> Adopciones</a>
+                <a href="donaciones.html" class="boton-nav"><i data-lucide="gift"></i> Donaciones</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="seccion-contenido">
+            <div class="encabezado-seccion">
+                <h2><i data-lucide="heart" class="titulo-icon"></i> Adopción Responsable</h2>
+                <p class="subtitulo">Dales una segunda oportunidad. Contamos con 7 perritos y 6 gatitos buscando un hogar lleno de amor. Conoce a todos nuestros rescatados.</p>
+            </div>
+
+            <!-- Filtros de categoría -->
+            <div class="contenedor-filtros">
+                <button onclick="filtrar('todos')" class="btn-filtro activo" id="btn-todos">
+                    <i data-lucide="grid"></i> Todos (13)
+                </button>
+                <button onclick="filtrar('perros')" class="btn-filtro" id="btn-perros">
+                    <i data-lucide="dog"></i> Perros (7)
+                </button>
+                <button onclick="filtrar('gatos')" class="btn-filtro" id="btn-gatos">
+                    <i data-lucide="cat"></i> Gatos (6)
+                </button>
+                <button onclick="filtrar('destacados')" class="btn-filtro btn-destacado" id="btn-destacados">
+                    <i data-lucide="star"></i> Destacados
+                </button>
+            </div>
+
+            <!-- Contenedor de Tarjetas (Destacados Primero) -->
+            <div class="adopciones-grid" id="grid-mascotas">
+                
+                <!-- ================= DESTACADOS (PRIMEROS) ================= -->
+
+                <!-- 1. Maya (Gata Destacada) -->
+                <div class="tarjeta-mascota" data-tipo="gatos" data-estado="destacado">
+                    <div class="badge-destacado"><i data-lucide="sparkles"></i> Destacado</div>
+                    <div class="contenedor-img">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=400&auto=format&fit=crop" alt="Maya" class="img-mascota">
+                        <span class="badge-tipo"><i data-lucide="cat"></i> Gato</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <h3>Maya</h3>
+                        <p class="edad"><i data-lucide="calendar"></i> <strong>Edad:</strong> 8 meses | <strong>Peso:</strong> 3.2 kg</p>
+                        <p class="descripcion">Tranquila, le encanta dormir al sol y es muy cariñosa. Desparasitada y sana.</p>
+                        <div class="acciones-tarjeta">
+                            <a href="detalle.html?mascota=Maya" class="btn-info"><i data-lucide="activity"></i> + Info médica</a>
+                            <a href="papeleo.html?mascota=Maya" class="boton-accion"><i data-lucide="heart"></i> Adoptar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Toby (Perro Destacado) -->
+                <div class="tarjeta-mascota" data-tipo="perros" data-estado="destacado">
+                    <div class="badge-destacado"><i data-lucide="sparkles"></i> Destacado</div>
+                    <div class="contenedor-img">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=400&auto=format&fit=crop" alt="Toby" class="img-mascota">
+                        <span class="badge-tipo"><i data-lucide="dog"></i> Perro</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <h3>Toby</h3>
+                        <p class="edad"><i data-lucide="calendar"></i> <strong>Edad:</strong> 1 año y medio | <strong>Peso:</strong> 12.5 kg</p>
+                        <p class="descripcion">Juguetón, amigable con otros perros y muy obediente. Vacunado y esterilizado.</p>
+                        <div class="acciones-tarjeta">
+                            <a href="detalle.html?mascota=Toby" class="btn-info"><i data-lucide="activity"></i> + Info médica</a>
+                            <a href="papeleo.html?mascota=Toby" class="boton-accion"><i data-lucide="heart"></i> Adoptar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= RESTO DE PERROS (5 más = 7 en total) ================= -->
+                
+                <!-- Balthazar -->
+                <div class="tarjeta-mascota" data-tipo="perros" data-estado="normal">
+                    <div class="contenedor-img">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=400&auto=format&fit=crop" alt="Balthazar" class="img-mascota">
+                        <span class="badge-tipo"><i data-lucide="dog"></i> Perro</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <h3>Balthazar</h3>
+                        <p class="edad"><i data-lucide="calendar"></i> <strong>Edad:</strong> 2 años | <strong>Peso:</strong> 18.0 kg</p>
+                        <p class="descripcion">Muy enérgico, ideal para patios grandes o familias activas. Le encanta correr.</p>
+                        <div class="acciones-tarjeta">
+                            <a href="detalle.html?mascota=Balthazar" class="btn-info"><i data-lucide="activity"></i> + Info médica</a>
+                            <a href="papeleo.html?mascota=Balthazar" class="boton-accion"><i data-lucide="heart"></i> Adoptar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nube -->
+                <div class="tarjeta-mascota" data-tipo="perros" data-estado="normal">
+                    <div class="contenedor-img">
+                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=400&auto=format&fit=crop" alt="Nube" class="img-mascota">
+                        <span class="badge-tipo"><i data-lucide="dog"></i> Perro</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <h3>Nube</h3>
+                        <p class="edad"><i data-lucide="calendar"></i> <strong>Edad:</strong> 4 meses | <strong>Peso:</strong> 4.8 kg</p>
+                        <p class="descripcion">Cachorro tierno y juguetón. Le gusta convivir con niños y otros animalitos.</p>
+                        <div class="acciones-tarjeta">
+                            <a href="detalle.html?mascota=Nube" class="btn-info"><i data-lucide="activity"></i> + Info médica</a>
+                            <a href="pape

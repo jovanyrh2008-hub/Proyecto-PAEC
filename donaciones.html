@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas Comunitarias - Donaciones</title>
+    <link rel="stylesheet" href="estilo.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <i data-lucide="heart-handshake" class="logo-icon"></i>
+                <h1>Huellitas Comunitarias</h1>
+            </div>
+            <nav class="barra-navegacion">
+                <a href="index.html" class="boton-nav"><i data-lucide="home"></i> Inicio</a>
+                <a href="adopciones.html" class="boton-nav"><i data-lucide="paw-print"></i> Adopciones</a>
+                <a href="donaciones.html" class="boton-nav activo"><i data-lucide="gift"></i> Donaciones</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="seccion-contenido">
+            <div class="encabezado-seccion">
+                <h2><i data-lucide="gift" class="titulo-icon"></i> Gestión de Suministros y Donaciones</h2>
+                <p class="subtitulo">Mantener nuestro refugio y alimentar a los rescatados requiere el apoyo de toda la comunidad. Conoce las necesidades actuales y cómo hacernos llegar tu aportación.</p>
+            </div>
+
+            <div class="donaciones-grid">
+                <div class="caja-info">
+                    <div class="encabezado-caja">
+                        <i data-lucide="package-check" class="icono-caja"></i>
+                        <h3>Suministros Solicitados</h3>
+                    </div>
+                    <ul class="lista-suministros">
+                        <li><i data-lucide="check-circle-2"></i> Alimento seco y húmedo para perros y gatos.</li>
+                        <li><i data-lucide="check-circle-2"></i> Cobijas, sábanas limpias y toallas usadas.</li>
+                        <li><i data-lucide="check-circle-2"></i> Artículos de limpieza (cloro, jabón, franelas).</li>
+                        <li><i data-lucide="check-circle-2"></i> Platos de plástico o metal para comida y agua.</li>
+                        <li><i data-lucide="check-circle-2"></i> Correas, collares y juguetes en buen estado.</li>
+                    </ul>
+                </div>
+
+                <div class="caja-info">
+                    <div class="encabezado-caja">
+                        <i data-lucide="map-pin" class="icono-caja"></i>
+                        <h3>Centro de Acopio</h3>
+                    </div>
+                    <div class="datos-acopio">
+                        <p><i data-lucide="map-pin"></i> <strong>Ubicación:</strong> Zona Comunitaria Principal, Módulo B.</p>
+                        <p><i data-lucide="calendar"></i> <strong>Días de recepción:</strong> Lunes a Viernes.</p>
+                        <p><i data-lucide="clock"></i> <strong>Horario:</strong> 9:00 AM a 3:00 PM.</p>
+                        <p><i data-lucide="mail"></i> <strong>Contacto directo:</strong> Puedes agendar una entrega especial escribiendo a nuestro correo comunitario.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario de Donación -->
+            <div class="contenedor-formulario-donacion">
+                <div class="encabezado-form">
+                    <i data-lucide="calendar-heart"></i>
+                    <h3>Agendar Entrega de Donación</h3>
+                </div>
+                <p class="desc-form">Completa los detalles de tu aportación para esperarte en el Módulo B:</p>
+                
+                <form id="form-donacion" onsubmit="confirmarDonacion(event)">
+                    <div class="grupo-campo">
+                        <label><i data-lucide="user"></i> Tu nombre o grupo:</label>
+                        <input type="text" id="don-nombre" required placeholder="Ej. Juan Pérez" class="input-estilizado">
+                    </div>
+                    
+                    <div class="grupo-campo">
+                        <label><i data-lucide="box"></i> ¿Qué deseas donar?</label>
+                        <input type="text" id="don-item" required placeholder="Ej. Croquetas y cobijas" class="input-estilizado">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label><i data-lucide="calendar"></i> Día que asistirás:</label>
+                        <input type="date" id="don-dia" required class="input-estilizado">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label><i data-lucide="clock"></i> Hora estimada:</label>
+                        <input type="time" id="don-hora" required class="input-estilizado">
+                    </div>
+
+                    <button type="submit" class="boton-accion btn-form"><i data-lucide="check-circle"></i> Confirmar y Registrar Donación</button>
+                </form>
+
+                <!-- Mensaje bonito de confirmación -->
+                <div id="mensaje-exito-donacion" class="mensaje-exito" style="display:none;">
+                    <i data-lucide="party-popper" class="icono-exito"></i>
+                    <h4>¡Muchas gracias por tu generosidad!</h4>
+                    <p>Tu registro de donación ha sido guardado exitosamente. Te esperamos en el Módulo B.</p>
+                    <button onclick="resetearFormDonacion()" class="boton-accion btn-reset"><i data-lucide="rotate-ccw"></i> Hacer otra donación</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto PAEC - Huellitas Comunitarias &copy; 2026. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function confirmarDonacion(e) {
+            e.preventDefault();
+            document.getElementById('form-donacion').style.display = 'none';
+            document.getElementById('mensaje-exito-donacion').style.display = 'block';
+            document.getElementById('mensaje-exito-donacion').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetearFormDonacion() {
+            document.getElementById('form-donacion').reset();
+            document.getElementById('form-donacion').style.display = 'block';
+            document.getElementById('mensaje-exito-donacion').style.display = 'none';
+        }
+
+        // Inicializar iconos
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>

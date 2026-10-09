@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas Comunitarias - Papeleo de Adopción</title>
+    <link rel="stylesheet" href="estilo.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <i data-lucide="heart-handshake" class="logo-icon"></i>
+                <h1>Huellitas Comunitarias</h1>
+            </div>
+            <nav class="barra-navegacion">
+                <a href="index.html" class="boton-nav"><i data-lucide="home"></i> Inicio</a>
+                <a href="adopciones.html" class="boton-nav activo"><i data-lucide="paw-print"></i> Adopciones</a>
+                <a href="donaciones.html" class="boton-nav"><i data-lucide="gift"></i> Donaciones</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="seccion-contenido">
+            <!-- Botón para regresar -->
+            <a href="adopciones.html" class="btn-regresar">
+                <i data-lucide="arrow-left"></i> Regresar a Adopciones
+            </a>
+
+            <div class="encabezado-seccion">
+                <h2 id="titulo-mascota"><i data-lucide="clipboard-check" class="titulo-icon"></i> Papeleo de Adopción</h2>
+                <p class="subtitulo">Estás a un paso de darle un hogar a <span id="lbl-mascota" style="font-weight: bold; color: var(--color-principal);"></span>. Por favor completa los siguientes datos:</p>
+            </div>
+
+            <!-- Formulario de Papeleo -->
+            <div class="contenedor-formulario-papeleo">
+                <form id="form-papeleo" onsubmit="generarTicket(event)">
+                    <div class="grupo-campo">
+                        <label><i data-lucide="user"></i> Nombre completo:</label>
+                        <input type="text" id="inp-nombre" required placeholder="Ingresa tu nombre completo" class="input-estilizado">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label><i data-lucide="phone"></i> Teléfono de contacto:</label>
+                        <input type="tel" id="inp-tel" required placeholder="Ej. 55 1234 5678" class="input-estilizado">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label><i data-lucide="heart-handshake"></i> ¿Por qué deseas adoptarle?</label>
+                        <textarea id="inp-razon" rows="3" required placeholder="Cuéntanos brevemente la razón de tu adopción..." class="input-estilizado"></textarea>
+                    </div>
+
+                    <button type="submit" class="boton-accion btn-form">
+                        <i data-lucide="file-check"></i> Enviar Solicitud y Generar Ticket
+                    </button>
+                </form>
+
+                <!-- Mensaje y Mini Ticket (Ocultos al inicio) -->
+                <div id="contenedor-resultado" style="display:none; margin-top:20px;">
+                    <div class="mensaje-exito" style="margin-bottom: 25px;">
+                        <i data-lucide="check-circle-2" class="icono-exito"></i>
+                        <h4>¡Solicitud Registrada con Éxito!</h4>
+                        <p>Hemos guardado tu información correctamente. Aquí tienes tu comprobante oficial para presentar en el refugio:</p>
+                    </div>
+
+                    <div id="mini-ticket" class="ticket-contenedor">
+                        <div class="ticket-header">
+                            <i data-lucide="ticket" style="width: 24px; height: 24px; color: var(--color-principal);"></i>
+                            <h4>TICKET DE REFERENCIA PAEC</h4>
+                        </div>
+                        <div class="ticket-body">
+                            <p><strong>Folio:</strong> <span id="t-folio"></span></p>
+                            <p><strong>Adoptante:</strong> <span id="t-nombre"></span></p>
+                            <p><strong>Teléfono:</strong> <span id="t-tel"></span></p>
+                            <p><strong>Mascota Solicitada:</strong> <span id="t-mascota"></span></p>
+                            <p><strong>Fecha:</strong> 02/10/2026</p>
+                        </div>
+                        <div class="ticket-footer">
+                            ¡Presenta este ticket impreso o digital en el refugio para validar tu solicitud!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto PAEC - Huellitas Comunitarias &copy; 2026. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const mascota = params.get('mascota') || "nuestra mascota";
+        document.getElementById('lbl-mascota').innerText = mascota;
+
+        function generarTicket(e) {
+            e.preventDefault();
+            let nombre = document.getElementById('inp-nombre').value;
+            let tel = document.getElementById('inp-tel').value;
+            let folioAleatorio = Math.floor(100000 + Math.random() * 900000);
+
+            document.getElementById('t-folio').innerText = "#" + folioAleatorio;
+            document.getElementById('t-nombre').innerText = nombre;
+            document.getElementById('t-tel').innerText = tel;
+            document.getElementById('t-mascota').innerText = mascota;
+
+            // Ocultar formulario y mostrar el mensaje bonito con el ticket
+            document.getElementById('form-papeleo').style.display = 'none';
+            document.getElementById('contenedor-resultado').style.display = 'block';
+            document.getElementById('contenedor-resultado').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Inicializar iconos
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>
